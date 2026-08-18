@@ -3,7 +3,7 @@ const cors = require("cors");
 
 require("./db");
 
-const Todo = require("./models/todo");
+const Todo = require("./models/Todo");
 
 const app = express();
 
@@ -23,6 +23,8 @@ app.get("/todos", async (req, res) => {
 app.post("/todos", async (req, res) => {
   let todo = await Todo.create({
     title: req.body.title,
+    name: req.body.name,
+    email: req.body.email,
   });
 
   res.send(todo);
@@ -31,7 +33,12 @@ app.post("/todos", async (req, res) => {
 app.put("/todos/:id", async (req, res) => {
   let todo = await Todo.findByIdAndUpdate(
     req.params.id,
-    { title: req.body.title },
+    {
+      title: req.body.title,
+      name: req.body.name,
+      email: req.body.email,
+    },
+
     { new: true },
   );
 
