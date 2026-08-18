@@ -3,7 +3,7 @@ const cors = require("cors");
 
 require("./db");
 
-const Todo = require("./models/Todo");
+const Todo = require("./models/todo");
 
 const app = express();
 
