@@ -10,6 +10,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => {
+  res.send("Todo App Backend is Running");
+});
+
 app.get("/todos", async (req, res) => {
   let todos = await Todo.find();
 
